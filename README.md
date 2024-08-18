@@ -1,5 +1,5 @@
 ## payment-app
-** make sure you have Node installed in your devicec**
+**make sure you have Node installed in your devicec**
 - Download the file
 - Ask for the mongoDB url to the creater
 - change the mongoDB url in backend/db.js your locally downloaded file
