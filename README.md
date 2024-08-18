@@ -1,6 +1,7 @@
 ## payment-app
 
 - Download the file
+- Ask for the mongoDB url to the creater
 - go to backend to index.js and run it
 - go to frontend and run these commands
 - npm i
