@@ -2,6 +2,7 @@
 
 - Download the file
 - Ask for the mongoDB url to the creater
+- change the mongoDB url in backend/db.js your locally downloaded file
 - go to backend to index.js and run it
 - go to frontend and run these commands
 - npm i
