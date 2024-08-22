@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
+const corsOptions = {
+  origin: 'https://payment-5vpzmv7lt-kshitij-ys-projects.vercel.app',
+  optionsSuccessStatus: 200, // For legacy browser support
+};
 
-app.use(cors());
+// Apply CORS middleware with the specified options
+app.use(cors(corsOptions)););
 app.use(express.json());
 
 const mainRouter = require("./routes/index")
