@@ -5,7 +5,7 @@ export const Users = () => {
     const [users, setUsers] = useState([]);
     const [fil, setFil] = useState("");
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/user/bulk?filter="+fil)
+        axios.get("https://payment-app-backend-3qxo.onrender.com/api/v1/user/bulk?filter="+fil)
             .then(response => {
                 setUsers(response.data.user);
             })

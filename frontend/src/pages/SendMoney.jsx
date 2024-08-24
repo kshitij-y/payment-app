@@ -34,7 +34,7 @@ export const SendMoney = () => {
                     </div>
                     <div className="mx-6 mt-3 m-6">
                         <button onClick={() => {
-                            axios.post("http://localhost:3000/api/v1/account/transfer", {
+                            axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/account/transfer", {
                                 to: id,
                                 amount
                             }, {

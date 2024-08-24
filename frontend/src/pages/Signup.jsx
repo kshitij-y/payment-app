@@ -24,7 +24,7 @@ export const Signup = () => {
             <InputBox onChange={e => {setPassword(e.target.value)}} label={"Password"} placeholder="min 6 char" />
             <div className="pt-4">
                 <Button label={"Sign Up"} onClick={ async () => {
-                    const res = await axios.post("http://localhost:3000/api/v1/user/signup", {
+                    const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/user/signup", {
                         username,
                         password,
                         firstName,
