@@ -11,6 +11,7 @@ export const Signin = () => {
     const [username, setUsername ] = useState("");
     const [password, setPassword ] = useState("");
     const navigate = useNavigate();
+    const [message, setMessage] = useState("");
 
     return <div className="bg-slate-300 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
@@ -21,16 +22,25 @@ export const Signin = () => {
                 <InputBox onChange={e => {setPassword(e.target.value)}} label={"Password"} placeholder="min 6 char" />
                 <div className="pt-4">
                     <Button label={"Sign In"} onClick={async () => {
-                        const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/user/signin", {
-                            username,
-                            password,
-                        })
-                        localStorage.setItem("token", res.data.token);
-                        localStorage.setItem("id", res.data.id);
-                        localStorage.setItem("logedin", true);
-                        navigate("/dashboard")
+                        setMessage("");
+                        try {
+                            const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/user/signin", {
+                                username,
+                                password,
+                            });
+                            setMessage(res.data.message); // Set the message in state
+                            if (res.data.token) {
+                                localStorage.setItem("token", res.data.token);
+                                localStorage.setItem("id", res.data.id);
+                                localStorage.setItem("logedin", true);
+                                navigate("/dashboard");
+                            }
+                        } catch (error) {
+                            setMessage(error.response?.data?.message || "An error occurred");
+                        }
                     }} />
                 </div>
+                {message && <p className="text-red-500 pt-4">{message}</p>}
                 <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"} />
 
 

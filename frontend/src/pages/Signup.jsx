@@ -12,6 +12,7 @@ export const Signup = () => {
     const [lastName, setLastName ] = useState("");
     const [username, setUsername ] = useState("");
     const [password, setPassword ] = useState("");
+    const [message, setMessage] = useState("");
 
     return <div className="bg-slate-300 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
@@ -24,17 +25,26 @@ export const Signup = () => {
             <InputBox onChange={e => {setPassword(e.target.value)}} label={"Password"} placeholder="min 6 char" />
             <div className="pt-4">
                 <Button label={"Sign Up"} onClick={ async () => {
-                    const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/user/signup", {
-                        username,
-                        password,
-                        firstName,
-                        lastName
-                    })
-                    localStorage.setItem("token", res.data.token)
-                    navigate("/dashboard")
+                    setMessage("");
+                    try {
+                        const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/user/signup", {
+                            username,
+                            password,
+                            firstName,
+                            lastName
+                        });
+                        setMessage(res.data.message); // Set the message in state
+                        if (res.data.token) {
+                            localStorage.setItem("token", res.data.token);
+                            navigate("/dashboard");
+                        }
+                    } catch (error) {
+                        setMessage(error.response?.data?.message || "An error occurred");
+                    }
 
                 }} />
             </div>
+            {message && <p className="text-red-500 pt-4">{message}</p>}
             <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
 
 
