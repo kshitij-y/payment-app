@@ -1,5 +1,12 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://kshitij:esdXfLs%24ywF42a.@cluster0.ampvoxv.mongodb.net/paytm?retryWrites=true&w=majority&appName=Cluster0')
+
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 
 const userSchema = new mongoose.Schema({
     username: {
