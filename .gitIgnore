@@ -10,6 +10,7 @@ lerna-debug.log*
 # Node modules directory
 node_modules
 .env
+pair1.pem
 
 dist
 dist-ssr
