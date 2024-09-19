@@ -9,4 +9,5 @@ const mainRouter = require("./routes/index")
 app.use("/api/v1", mainRouter);
 
 const port = process.env.PORT || 3000 ;
+console.log("Server running on " + port);
 app.listen(port)
