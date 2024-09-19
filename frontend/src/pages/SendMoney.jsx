@@ -19,7 +19,8 @@ export const SendMoney = () => {
         }
 
         try {
-            const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/account/transfer", {
+            const backend_api = import.meta.env.VITE_API;
+            const res = await axios.post(`${backend_api}/api/v1/account/transfer`, {
                 to: id,
                 amount: parseFloat(amount)
             }, {

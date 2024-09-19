@@ -27,7 +27,8 @@ export const Signup = () => {
                 <Button label={"Sign Up"} onClick={ async () => {
                     setMessage("");
                     try {
-                        const res = await axios.post("https://payment-app-backend-3qxo.onrender.com/api/v1/user/signup", {
+                        const backend_api = import.meta.env.VITE_API;
+                        const res = await axios.post(`${backend_api}/api/v1/user/signup`, {
                             username,
                             password,
                             firstName,

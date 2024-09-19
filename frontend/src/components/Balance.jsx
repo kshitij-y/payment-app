@@ -8,7 +8,8 @@ export const Balance = ({ label }) => {
     useEffect(() => {
         const fetchBalance = async () => {
             try {
-                const response = await axios.get("https://payment-app-backend-3qxo.onrender.com/api/v1/account/balance", {
+                const backend_api = import.meta.env.VITE_API;
+                const response = await axios.get(`${backend_api}/api/v1/account/balance`, {
                     headers: {
                         Authorization: "Bearer " + localStorage.getItem("token"),
                         "Content-Type": "application/json"

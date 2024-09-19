@@ -11,7 +11,8 @@ export const Appbar = () => {
     useEffect(() => {
         const fetchName = async () => {
             try {
-                const response = await axios.get("https://payment-app-backend-3qxo.onrender.com/api/v1/user/name?id=" + localStorage.getItem("id"));
+                const backend_api = import.meta.env.VITE_API;
+                const response = await axios.get(`${backend_api}/api/v1/user/name?id=` + localStorage.getItem("id"));
                 const userName = response.data.name; // Assuming the API returns { name: "User Name" }
                 setName(userName);
                 setFirstLetter(userName[0].toUpperCase());

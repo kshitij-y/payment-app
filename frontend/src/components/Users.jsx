@@ -5,7 +5,8 @@ export const Users = () => {
     const [users, setUsers] = useState([]);
     const [fil, setFil] = useState("");
     useEffect(() => {
-        axios.get("https://payment-app-backend-3qxo.onrender.com/api/v1/user/bulk?filter="+fil)
+        const backend_api = import.meta.env.VITE_API;
+        axios.get(`${backend_api}/api/v1/user/bulk?filter=`+fil)
             .then(response => {
                 setUsers(response.data.user);
             })
